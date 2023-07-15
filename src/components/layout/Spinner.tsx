@@ -1,7 +1,7 @@
 import React from 'react'
 import spinner from './assets/spinner.gif'
 
-const Spinner = () => {
+const Spinner: React.FC = () => {
   return (
     <div className="w-100 mt-20">
       <img

@@ -3,19 +3,17 @@ import {
   useLazySearchUsersQuery,
   useSearchUsersQuery,
 } from '../../store/github/github.api'
-import Spinner from '../layout/Spinner'
 import { useActions } from '../../hooks/action'
 import Alert from '../layout/Alert'
 import { useDebounce } from '../../hooks/debounce'
 import { useNavigate } from 'react-router-dom'
 
-const UserSearch = () => {
+const UserSearch: React.FC = () => {
   const navigate = useNavigate()
-  const [search, setSearch] = useState('')
   const [text, setText] = useState<string>('')
   const [dropdown, setDropdown] = useState(false)
   const debounced = useDebounce(text)
-  const { isLoading, isError, data } = useSearchUsersQuery(debounced, {
+  const { isLoading, data } = useSearchUsersQuery(debounced, {
     skip: debounced.length < 3,
     refetchOnFocus: true,
   })
@@ -28,7 +26,6 @@ const UserSearch = () => {
   const [
     fetchLazyUsers,
     {
-      // isError: lazyUsersIsError,
       isLoading: lazyUsersIsLoading,
       isSuccess: lazyUsersIsSuccess,
       data: lazyUsers,

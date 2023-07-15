@@ -1,4 +1,6 @@
-function About() {
+import React from 'react'
+
+const About: React.FC = () => {
   return (
     <>
       <h1 className="text-6xl mb-4">Github Finder</h1>

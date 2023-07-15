@@ -7,7 +7,7 @@ import {
 import { useParams, Link } from 'react-router-dom'
 import RepoList from '../repos/RepoList'
 
-const User = () => {
+const User: React.FC = () => {
   const params = useParams()
   const { data: user } = useGetUserQuery(`${params.login}`)
   const { data: repos } = useGetUserReposQuery(`${user?.login}`)
