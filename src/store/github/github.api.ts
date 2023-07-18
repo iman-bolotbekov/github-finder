@@ -5,6 +5,14 @@ export const githubApi = createApi({
   reducerPath: 'github/api',
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_GITHUB_URL,
+    prepareHeaders: (headers, { getState }) => {
+      headers.set(
+        'Authorization',
+        `token ${process.env.REACT_APP_GITHUB_TOKEN}`
+      )
+      headers.set('Content-Type', 'application/json')
+      return headers
+    },
   }),
   refetchOnFocus: true,
   endpoints: (build) => ({
