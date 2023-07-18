@@ -4,15 +4,7 @@ import { IUser, ServerResponse, IRepo } from '../../types/github/github'
 export const githubApi = createApi({
   reducerPath: 'github/api',
   baseQuery: fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_GITHUB_URL,
-    prepareHeaders: (headers, { getState }) => {
-      headers.set(
-        'Authorization',
-        `token ${process.env.REACT_APP_GITHUB_TOKEN}`
-      )
-      headers.set('Content-Type', 'application/json')
-      return headers
-    },
+    baseUrl: `https://api.github.com/`,
   }),
   refetchOnFocus: true,
   endpoints: (build) => ({
